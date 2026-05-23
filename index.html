@@ -1923,6 +1923,24 @@
             if (e.key === 'Escape') closeMobileMenu();
         });
 
+        // 全屏播放
+        document.querySelectorAll('.portfolio-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
+                
+                const video = this.querySelector('.card-video');
+                if (!video) return;
+                
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
+            });
+        });
+
         // ==================== 初始化 ====================
         console.log('%c DEAPBLUE Studio %c 三维设计师个人博客 ',
             'background:#0a0a0f;color:#00d4ff;padding:8px 12px;border-radius:6px 0 0 6px;font-weight:bold;',
